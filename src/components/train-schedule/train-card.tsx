@@ -5,24 +5,15 @@ import { Button } from '@/components/ui/button';
 import { ClassSelector } from './class-selector';
 import { StopsTable } from './stops-table';
 import { Train as TrainIcon, ArrowRight, Clock, Building2, ChevronDown, ChevronUp } from 'lucide-react';
-import { toast } from 'sonner';
 
 interface TrainCardProps {
   train: Train;
-  selectedGlobalClass: TrainClass | null;
+  selectedClass: TrainClass | null;
   onSelectClass: (trainClass: TrainClass | null) => void;
 }
 
-export function TrainCard({ train, selectedGlobalClass, onSelectClass }: TrainCardProps) {
+export function TrainCard({ train, selectedClass, onSelectClass }: TrainCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-
-  const handleBuy = () => {
-    if (!selectedGlobalClass) {
-      toast.error('请选择一张车票');
-      return;
-    }
-    toast.success(`${train.number} - ${selectedGlobalClass.name} 订票成功`);
-  };
 
   return (
     <Card className="hover:shadow-lg transition-shadow">
@@ -74,7 +65,7 @@ export function TrainCard({ train, selectedGlobalClass, onSelectClass }: TrainCa
 
         <ClassSelector
           classes={train.classes}
-          selectedClass={selectedGlobalClass}
+          selectedClass={selectedClass}
           onSelect={onSelectClass}
         />
 
@@ -85,17 +76,6 @@ export function TrainCard({ train, selectedGlobalClass, onSelectClass }: TrainCa
             arrivalStation={train.arrival.station}
           />
         )}
-
-        <Button 
-          className="w-full mt-4" 
-          onClick={handleBuy}
-          disabled={!selectedGlobalClass}
-        >
-          {selectedGlobalClass 
-            ? `购买 ￥${selectedGlobalClass.price.toFixed(2)}`
-            : '请选择一张车票'
-          }
-        </Button>
       </CardContent>
     </Card>
   );

@@ -1,26 +1,21 @@
-import { useState } from 'react';
 import { Train, TrainClass } from '@/types/train';
 import { TrainCard } from './train-card';
 
 interface ScheduleListProps {
   trains: Train[];
+  selectedClass: TrainClass | null;
+  onSelectClass: (trainClass: TrainClass | null) => void;
 }
 
-export function ScheduleList({ trains }: ScheduleListProps) {
-  const [selectedGlobalClass, setSelectedGlobalClass] = useState<TrainClass | null>(null);
-
-  const handleClassSelect = (trainClass: TrainClass | null) => {
-    setSelectedGlobalClass(trainClass === selectedGlobalClass ? null : trainClass);
-  };
-
+export function ScheduleList({ trains, selectedClass, onSelectClass }: ScheduleListProps) {
   return (
     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-3">
       {trains.map((train) => (
         <TrainCard 
           key={train.id} 
           train={train} 
-          selectedGlobalClass={selectedGlobalClass}
-          onSelectClass={handleClassSelect}
+          selectedClass={selectedClass}
+          onSelectClass={onSelectClass}
         />
       ))}
     </div>
