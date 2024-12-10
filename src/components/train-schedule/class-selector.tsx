@@ -15,7 +15,7 @@ export function ClassSelector({ classes, selectedClass, onSelect }: ClassSelecto
       {classes.map((trainClass) => (
         <Button
           key={trainClass.name}
-          variant={selectedClass?.name === trainClass.name ? "default" : "outline"}
+          variant={selectedClass?.uid === trainClass.uid ? "default" : "outline"}
           className="flex flex-col items-center p-4 h-auto relative"
           onClick={() => onSelect(trainClass)}
           disabled={trainClass.remainingTickets === 0}
@@ -24,7 +24,7 @@ export function ClassSelector({ classes, selectedClass, onSelect }: ClassSelecto
             variant="secondary" 
             className="absolute top-2 right-2"
           >
-            {trainClass.remainingTickets > 10 ? '充足' : `余 ${trainClass.remainingTickets}`}
+            {trainClass.remainingTickets >= 10 ? '有票' : trainClass.remainingTickets == 0 ? '无票' : `余 ${trainClass.remainingTickets}`} 
           </Badge>
           <div className="flex items-center gap-2 mb-2">
             {trainClass.name === '商务座' && <Crown className="h-4 w-4" />}

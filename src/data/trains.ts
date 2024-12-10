@@ -14,16 +14,19 @@ export const trains: Train[] = [
     },
     classes: [
       {
+        uid: '1',
         name: '商务座',
         price: 1506.0,
         remainingTickets: 8
       },
       {
+        uid: '2',
         name: '一等座',
         price: 747.0,
         remainingTickets: 8
       },
       {
+        uid: '3',
         name: '二等座',
         price: 445.0,
         remainingTickets: 32
@@ -65,16 +68,19 @@ export const trains: Train[] = [
     },
     classes: [
       {
+        uid: '4',
         name: '二等座',
         price: 233.0,
         remainingTickets: 12
       },
       {
+        uid: '5',
         name: '一等卧',
         price: 443.0,
         remainingTickets: 12
       },
       {
+        uid: '6',
         name: '二等卧',
         price: 350.0,
         remainingTickets: 12
@@ -116,21 +122,25 @@ export const trains: Train[] = [
     },
     classes: [
       {
+        uid: '7',
         name: '一等卧',
         price: 381.5,
         remainingTickets: 10
       },
       {
+        uid: '8',
         name: '二等卧',
         price: 244.5,
         remainingTickets: 50
       },
       {
+        uid: '9',
         name: '硬座',
         price: 141.5,
         remainingTickets: 1
       },
       {
+        uid: '10',
         name: '无座',
         price: 141.5,
         remainingTickets: 0
