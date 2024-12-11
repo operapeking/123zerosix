@@ -7,20 +7,24 @@ import { TrainClass } from '@/types/train';
 import { toast } from 'sonner';
 import { Toaster } from '@/components/ui/sonner';
 import { Input } from '@/components/ui/input';
+import { motion, AnimatePresence } from 'framer-motion';
 
 function App() {
-  const [searchQuery, setSearchQuery] = useState('');
+  const [departure, setDeparture] = useState('');
+  const [arrival, setArrival] = useState('');
+  const [filteredTrains, setFilteredTrains] = useState(trains);
   const [selectedClass, setSelectedClass] = useState<TrainClass | null>(null);
   const [ticketCount, setTicketCount] = useState(1);
 
-  const filteredTrains = useMemo(() => {
-    const query = searchQuery.toLowerCase();
-    return trains.filter((train) => 
-      train.number.toLowerCase().includes(query) ||
-      train.departure.station.toLowerCase().includes(query) ||
-      train.arrival.station.toLowerCase().includes(query)
+  const handleSearch = () => {
+    const dep = departure.toLowerCase();
+    const arr = arrival.toLowerCase();
+    const filtered = trains.filter((train) => 
+      (!dep || train.departure.station.toLowerCase().includes(dep)) &&
+      (!arr || train.arrival.station.toLowerCase().includes(arr))
     );
-  }, [searchQuery]);
+    setFilteredTrains(filtered);
+  };
 
   const handleBuy = () => {
     if (!selectedClass) {
@@ -39,12 +43,26 @@ function App() {
   return (
     <div className="min-h-screen bg-background relative pb-20">
       <main className="container mx-auto py-8 px-4">
-        <ScheduleHeader onSearch={setSearchQuery} />
-        <ScheduleList 
-          trains={filteredTrains} 
-          selectedClass={selectedClass}
-          onSelectClass={setSelectedClass}
+        <ScheduleHeader 
+          onSearch={handleSearch}
+          onDepartureChange={setDeparture}
+          onArrivalChange={setArrival}
         />
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={filteredTrains.length}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -20 }}
+            transition={{ duration: 0.3 }}
+          >
+            <ScheduleList 
+              trains={filteredTrains} 
+              selectedClass={selectedClass}
+              onSelectClass={setSelectedClass}
+            />
+          </motion.div>
+        </AnimatePresence>
       </main>
       <div className="fixed bottom-0 right-0 p-4 bg-background border-t w-full shadow-lg">
         <div className="container mx-auto flex justify-end items-center gap-4">

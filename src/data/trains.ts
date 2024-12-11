@@ -4,13 +4,16 @@ export const trains: Train[] = [
   {
     id: '1',
     number: 'G1',
+    types: ['高铁'],
     departure: {
       station: '北京南',
       time: '07:00',
+      icon: 'https://img.icons8.com/ios/50/beijing.png',
     },
     arrival: {
       station: '南京南',
       time: '10:24',
+      icon: 'https://img.icons8.com/ios/50/flower--v2.png',
     },
     classes: [
       {
@@ -58,13 +61,16 @@ export const trains: Train[] = [
   {
     id: '2',
     number: 'D7',
+    types: ['动车'],
     departure: {
       station: '北京',
       time: '19:22',
+      icon: 'https://img.icons8.com/ios/50/beijing.png',
     },
     arrival: {
       station: '南京',
       time: '04:52',
+      icon: 'https://img.icons8.com/ios/50/flower--v2.png',
     },
     classes: [
       {
@@ -112,13 +118,16 @@ export const trains: Train[] = [
   {
     id: '3',
     number: 'Z281',
+    types: ['直达'],
     departure: {
       station: '北京丰台',
       time: '18:56',
+      icon: 'https://img.icons8.com/ios/50/beijing.png',
     },
     arrival: {
       station: '南京',
       time: '05:11',
+      icon: 'https://img.icons8.com/ios/50/flower--v2.png',
     },
     classes: [
       {

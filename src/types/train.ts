@@ -11,16 +11,21 @@ export interface TrainClass {
   remainingTickets: number;
 }
 
+export type TrainType = '动车' | '高铁' | '特快' | '直达';
+
 export interface Train {
   id: string;
   number: string;
+  types: TrainType[];
   departure: {
     station: string;
     time: string;
+    icon?: string;
   };
   arrival: {
     station: string;
     time: string;
+    icon?: string;
   };
   classes: TrainClass[];
   stops: Stop[];

@@ -4,13 +4,22 @@ import { Button } from '@/components/ui/button';
 import { motion } from 'framer-motion';
 
 interface ScheduleHeaderProps {
-  onSearch: (query: string) => void;
+  onSearch: () => void;
+  onDepartureChange: (value: string) => void;
+  onArrivalChange: (value: string) => void;
 }
 
-export function ScheduleHeader({ onSearch }: ScheduleHeaderProps) {
+export function ScheduleHeader({ onSearch, onDepartureChange, onArrivalChange }: ScheduleHeaderProps) {
   return (
     <div className="space-y-4 mb-8">
-      <h1 className="text-3xl font-bold tracking-tight">🚅12306+</h1>
+      <div className="space-y-2">
+        
+        <h1 className="text-3xl font-bold tracking-tight">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/China_Railways.svg" className="h-12 w-12"/>
+          <span>12306</span>
+        </h1>
+        <p className="text-muted-foreground">交通强国，铁路先行</p>
+      </div>
       <div className="grid gap-4 md:grid-cols-4">
         <motion.div 
           className="relative"
@@ -32,7 +41,7 @@ export function ScheduleHeader({ onSearch }: ScheduleHeaderProps) {
           <Input
             placeholder="出发地"
             className="pl-10"
-            onChange={(e) => onSearch(e.target.value)}
+            onChange={(e) => onDepartureChange(e.target.value)}
           />
         </motion.div>
         <motion.div 
@@ -44,10 +53,15 @@ export function ScheduleHeader({ onSearch }: ScheduleHeaderProps) {
           <Input
             placeholder="目的地"
             className="pl-10"
-            onChange={(e) => onSearch(e.target.value)}
+            onChange={(e) => onArrivalChange(e.target.value)}
           />
         </motion.div>
-        <Button className="w-full md:w-24">查询</Button>
+        <Button 
+          className="w-full md:w-24"
+          onClick={onSearch}
+        >
+          查询
+        </Button>
       </div>
     </div>
   );
