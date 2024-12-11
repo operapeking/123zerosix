@@ -5,6 +5,7 @@ import { Button } from '@/components/ui/button';
 import { ClassSelector } from './class-selector';
 import { StopsTable } from './stops-table';
 import { Train as TrainIcon, ArrowRight, Clock, Building2, ChevronDown, ChevronUp } from 'lucide-react';
+import { motion, AnimatePresence } from 'framer-motion';
 
 interface TrainCardProps {
   train: Train;
@@ -16,7 +17,7 @@ export function TrainCard({ train, selectedClass, onSelectClass }: TrainCardProp
   const [isExpanded, setIsExpanded] = useState(false);
 
   return (
-    <Card className="hover:shadow-lg transition-shadow">
+    <Card className="hover:shadow-lg transition-shadow h-fit">
       <CardContent className="pt-6">
         <div className="flex items-center justify-between mb-4">
           <div className="flex items-center gap-2">
@@ -69,13 +70,23 @@ export function TrainCard({ train, selectedClass, onSelectClass }: TrainCardProp
           onSelect={onSelectClass}
         />
 
-        {isExpanded && (
-          <StopsTable 
-            stops={train.stops} 
-            departureStation={train.departure.station}
-            arrivalStation={train.arrival.station}
-          />
-        )}
+        <AnimatePresence>
+          {isExpanded && (
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: "auto", opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              transition={{ duration: 0.3 }}
+              className="overflow-hidden"
+            >
+              <StopsTable 
+                stops={train.stops} 
+                departureStation={train.departure.station}
+                arrivalStation={train.arrival.station}
+              />
+            </motion.div>
+          )}
+        </AnimatePresence>
       </CardContent>
     </Card>
   );
