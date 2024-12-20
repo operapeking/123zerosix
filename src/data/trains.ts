@@ -69,7 +69,7 @@ export const trains: Train[] = [
     },
     arrival: {
       station: '南京',
-      time: '04:52',
+      time: '28:52', // Next day 04:52
       icon: 'https://img.icons8.com/ios/50/flower--v2.png',
     },
     classes: [
@@ -100,17 +100,17 @@ export const trains: Train[] = [
       },
       {
         station: '南京',
-        arrival: '04:52',
-        departure: '04:58',
+        arrival: '28:52',
+        departure: '28:58',
       },
       {
         station: '南京南',
-        arrival: '10:24',
-        departure: '10:26',
+        arrival: '34:24',
+        departure: '34:26',
       },
       {
         station: '上海',
-        arrival: '07:25',
+        arrival: '31:25',
         departure: '-',
       },
     ],
@@ -126,7 +126,7 @@ export const trains: Train[] = [
     },
     arrival: {
       station: '南京',
-      time: '05:11',
+      time: '29:11', // Next day 05:11
       icon: 'https://img.icons8.com/ios/50/flower--v2.png',
     },
     classes: [
@@ -173,17 +173,17 @@ export const trains: Train[] = [
       },
       {
         station: '徐州',
-        arrival: '02:14',
-        departure: '02:23',
+        arrival: '26:14',
+        departure: '26:23',
       },
       {
         station: '南京',
-        arrival: '05:11',
-        departure: '05:19',
+        arrival: '29:11',
+        departure: '29:19',
       },
       {
         station: '杭州',
-        arrival: '10:57',
+        arrival: '34:57',
         departure: '-',
       },
     ],

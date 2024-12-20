@@ -9,6 +9,7 @@ import {
 import { Stop } from '@/types/train';
 import { Clock } from 'lucide-react';
 import { cn } from '@/lib/utils';
+import { TimeDisplay } from './time-display';
 
 interface StopsTableProps {
   stops: Stop[];
@@ -45,8 +46,12 @@ export function StopsTable({ stops, departureStation, arrivalStation }: StopsTab
               className={cn(!isStopInRoute(index) && "text-muted-foreground")}
             >
               <TableCell className="font-medium">{stop.station}</TableCell>
-              <TableCell>{stop.arrival}</TableCell>
-              <TableCell>{stop.departure}</TableCell>
+              <TableCell>
+                <TimeDisplay time={stop.arrival} />
+              </TableCell>
+              <TableCell>
+                <TimeDisplay time={stop.departure} />
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -13,15 +13,17 @@ export function ScheduleHeader({ onSearch, onDepartureChange, onArrivalChange }:
   return (
     <div className="space-y-4 mb-8">
       <div className="space-y-2">
-        
-        <h1 className="text-3xl font-bold tracking-tight">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/6/64/China_Railways.svg" className="h-12 w-12"/>
+        <h1 className="text-3xl font-bold tracking-tight flex items-center space-x-2">
+          <img
+            src="https://upload.wikimedia.org/wikipedia/commons/6/64/China_Railways.svg"
+            className="h-12 w-12"
+          />
           <span>12306</span>
         </h1>
         <p className="text-muted-foreground">交通强国，铁路先行</p>
       </div>
       <div className="grid gap-4 md:grid-cols-4">
-        <motion.div 
+        <motion.div
           className="relative"
           whileFocus={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -32,7 +34,7 @@ export function ScheduleHeader({ onSearch, onDepartureChange, onArrivalChange }:
             className="pl-10"
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           className="relative"
           whileFocus={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -44,7 +46,7 @@ export function ScheduleHeader({ onSearch, onDepartureChange, onArrivalChange }:
             onChange={(e) => onDepartureChange(e.target.value)}
           />
         </motion.div>
-        <motion.div 
+        <motion.div
           className="relative"
           whileFocus={{ scale: 1.02 }}
           transition={{ type: "spring", stiffness: 300, damping: 20 }}
@@ -56,7 +58,7 @@ export function ScheduleHeader({ onSearch, onDepartureChange, onArrivalChange }:
             onChange={(e) => onArrivalChange(e.target.value)}
           />
         </motion.div>
-        <Button 
+        <Button
           className="w-full md:w-24"
           onClick={onSearch}
         >
