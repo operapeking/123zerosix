@@ -1,4 +1,4 @@
-import { useState, useMemo } from 'react';
+import { useState } from 'react';
 import { trains } from '@/data/trains';
 import { ScheduleHeader } from '@/components/train-schedule/schedule-header';
 import { ScheduleList } from '@/components/train-schedule/schedule-list';
